@@ -9,7 +9,13 @@
 }
 
 .App-header {
-  background: linear-gradient(0.35turn, #7b7f85, #0eabd6, #ebf8e1, #7b7f85);
+  background: linear-gradient(
+    0.35turn,
+    rgb(52, 139, 252),
+    #0eabd6,
+    #ebf8e1,
+    #7b7f85
+  );
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -59,14 +65,9 @@
   border: 2px solid #0eabd6;
   min-width: 100vh;
   height: 200px;
-  background: linear-gradient(
-    00.25turn,
-    rgb(52, 139, 252),
-    #eee,
-    rgb(147, 141, 206)
-  );
+  background: linear-gradient(00.25turn, rgb(52, 139, 252), #eee, #92d1eb);
   margin: auto;
-  border-radius: 9%;
+  border-radius: 19px;
 }
 .button {
   display: flex;
