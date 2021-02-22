@@ -1,5 +1,8 @@
 import React from 'react'
 import './App.css'
+import Answers from '../src/components/answers/Answers.js'
+import Questions from '../src/components/questions/Questions.js'
+import Inquirer from '../src/components/Inquirer/Inquirer.js'
 
 export default class App extends React.Component {
   state = {
@@ -227,122 +230,35 @@ export default class App extends React.Component {
             </button>
           </div>
           <div className='App-quest'>
-            <div className='App-quwstion'>
-              <p>СПИСОК ВОПРОСОВ:</p>
-              <span>
-                <small> выберите вопрос и кликните</small>
-              </span>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput1}>
-                  {this.state.quest[0]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput2}>
-                  {this.state.quest[1]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput3}>
-                  {this.state.quest[2]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput4}>
-                  {this.state.quest[3]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput5}>
-                  {this.state.quest[4]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput6}>
-                  {this.state.quest[5]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput7}>
-                  {this.state.quest[6]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput8}>
-                  {this.state.quest[7]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput9}>
-                  {this.state.quest[8]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput10}>
-                  {this.state.quest[9]}
-                </button>
-              </p>
-              <p className='p_quest'>
-                <button onClick={this.onChangeInput11}>
-                  {this.state.quest[10]}
-                </button>
-              </p>
-            </div>
-            <div className='App-answers'>
-              <p>Ответы:</p>
-              <p>
-                1.&nbsp;
-                {this.state.hasInput1 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                2.&nbsp;
-                {this.state.hasInput2 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                3.&nbsp;
-                {this.state.hasInput3 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                4.&nbsp;
-                {this.state.hasInput4 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                5.&nbsp;
-                {this.state.hasInput5 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                6.&nbsp;
-                {this.state.hasInput6 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                7.&nbsp;
-                {this.state.hasInput7 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                8.&nbsp;
-                {this.state.hasInput8 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                9.&nbsp;
-                {this.state.hasInput9 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                10.&nbsp;
-                {this.state.hasInput10 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                11.&nbsp;
-                {this.state.hasInput11 ? <textarea></textarea> : undefined}
-              </p>
-              <p>
-                {this.state.hasEnd ? (
-                  <p>
-                    <div>Спасибо за участие в анкетировании.</div>
-                  </p>
-                ) : undefined}
-                <button onClick={this.testEnd}>Завершить анкетирование</button>
-              </p>
-            </div>
+            <Questions
+              quest={this.state.quest}
+              onChangeInput1={this.onChangeInput1}
+              onChangeInput2={this.onChangeInput2}
+              onChangeInput3={this.onChangeInput3}
+              onChangeInput4={this.onChangeInput4}
+              onChangeInput5={this.onChangeInput5}
+              onChangeInput6={this.onChangeInput6}
+              onChangeInput7={this.onChangeInput7}
+              onChangeInput8={this.onChangeInput8}
+              onChangeInput9={this.onChangeInput9}
+              onChangeInput10={this.onChangeInput10}
+              onChangeInput11={this.onChangeInput11}
+            />
+            <Answers
+              hasInput1={this.state.hasInput1}
+              hasInput2={this.state.hasInput2}
+              hasInput3={this.state.hasInput3}
+              hasInput4={this.state.hasInput4}
+              hasInput5={this.state.hasInput5}
+              hasInput6={this.state.hasInput6}
+              hasInput7={this.state.hasInput7}
+              hasInput8={this.state.hasInput8}
+              hasInput9={this.state.hasInput9}
+              hasInput10={this.state.hasInput10}
+              hasInput11={this.state.hasInput11}
+              hasEnd={this.hasEnd}
+              testEnd={this.testEnd}
+            />
           </div>
         </div>
       </div>
