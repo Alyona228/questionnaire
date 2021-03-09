@@ -3,7 +3,7 @@ import './App.css'
 import Answers from '../src/components/answers/Answers.js'
 import Questions from '../src/components/questions/Questions.js'
 import Inquirer from '../src/components/Inquirer/Inquirer.js'
-
+import axios from 'axios'
 export default class App extends React.Component {
   state = {
     famalay: [
@@ -57,31 +57,22 @@ export default class App extends React.Component {
     toun: '',
     surname: '',
     hasSelect: true,
-    hasInput1: false,
-    hasInput2: false,
-    hasInput3: false,
-    hasInput4: false,
-    hasInput5: false,
-    hasInput6: false,
-    hasInput7: false,
-    hasInput8: false,
-    hasInput9: false,
-    hasInput10: false,
-    hasInput11: false,
+    hasInput: false,
     hasEnd: false,
     quest: [
-      '1.Организация процесса распределения обязанностей между персоналом после внесения изменений в штатное расписание.',
-      '2.Старший специалист. Кто? Что входит в его обязанности. Какие функции фактически выполняет? Оказывает ли фактическую помощь в обучении специалистов?',
-      '3.Кто анализирует уровни сигналов и какую работу проводит по стабилизации показателя уровня на упреждение повреждений и жалоб?',
-      '4.Какие перспективы видите в своем подразделении нацеленные на развитие xPON?',
-      '5.Что предпринимаете для удержания существующей базы?',
-      '6.Техническая возможность. Сколько отказов? Причины? Что предпринимается для снижения количества отказов. Работа с отказами тв.',
-      '7.Перераспределение нагрузки в линейной задействованной ёмкости.',
-      '8.В случае задействования менее 50 % предложения по демонтажу кабельных линий связи, предложения по реконструкции сети.',
-      '9.Знаете ли количество повторных в структурном подразделении? Количество среднее устранённых в сутки?',
-      '10.Какой процент устранения в сутки ШПД? На сегодня. На конец месяца?',
-      '11.Задействованная станционная ёмкость? Методы повышения процента задействования?',
+      'Организация процесса распределения обязанностей между персоналом после внесения изменений в штатное расписание.',
+      'Старший специалист. Кто? Что входит в его обязанности. Какие функции фактически выполняет? Оказывает ли фактическую помощь в обучении специалистов?',
+      'Кто анализирует уровни сигналов и какую работу проводит по стабилизации показателя уровня на упреждение повреждений и жалоб?',
+      'Какие перспективы видите в своем подразделении нацеленные на развитие xPON?',
+      'Что предпринимаете для удержания существующей базы?',
+      'Техническая возможность. Сколько отказов? Причины? Что предпринимается для снижения количества отказов. Работа с отказами тв.',
+      'Перераспределение нагрузки в линейной задействованной ёмкости.',
+      'В случае задействования менее 50 % предложения по демонтажу кабельных линий связи, предложения по реконструкции сети.',
+      'Знаете ли количество повторных в структурном подразделении? Количество среднее устранённых в сутки?',
+      'Какой процент устранения в сутки ШПД? На сегодня. На конец месяца?',
+      'Задействованная станционная ёмкость? Методы повышения процента задействования?',
     ],
+    answer: [],
   }
 
   onChangeEnter = (e) => {
@@ -89,66 +80,28 @@ export default class App extends React.Component {
       hasSelect: false,
     })
   }
-  onChangeInput1 = (e) => {
+  onChangeInput = (e, item) => {
+    let quest = [...this.state.quest]
+    quest = quest.slice(quest.pop(item))
     this.setState({
-      hasInput1: true,
+      hasInput: true,
+      answer: [...this.state.quest],
     })
-  }
-  onChangeInput2 = (e) => {
-    this.setState({
-      hasInput2: true,
-    })
-  }
-  onChangeInput3 = (e) => {
-    this.setState({
-      hasInput3: true,
-    })
-  }
-  onChangeInput4 = (e) => {
-    this.setState({
-      hasInput4: true,
-    })
-  }
-  onChangeInput5 = (e) => {
-    this.setState({
-      hasInput5: true,
-    })
-  }
-  onChangeInput6 = (e) => {
-    this.setState({
-      hasInput6: true,
-    })
-  }
-  onChangeInput7 = (e) => {
-    this.setState({
-      hasInput7: true,
-    })
-  }
-  onChangeInput8 = (e) => {
-    this.setState({
-      hasInput8: true,
-    })
-  }
-  onChangeInput9 = (e) => {
-    this.setState({
-      hasInput9: true,
-    })
-  }
-  onChangeInput10 = (e) => {
-    this.setState({
-      hasInput10: true,
-    })
-  }
-  onChangeInput11 = (e) => {
-    this.setState({
-      hasInput11: true,
-    })
+
+    console.log(5 + 'колбаса')
   }
 
   onChangeSelect = (e) => {
     let a = this.state.famalay
     let famalay = [...this.state.famalay]
-
+    // try {
+    //   const response = axios.post(
+    //     'https://test-4d778-default-rtdb.firebaseio.com/.json'
+    //   )
+    //   console.log(response.data)
+    // } catch (e) {
+    //   console.log(e)
+    // }
     this.setState({
       text: e.target.value,
       famalay: famalay,
@@ -173,10 +126,17 @@ export default class App extends React.Component {
     })
   }
   testEnd = () => {
+    console.log(1)
     this.setState({
       hasEnd: true,
     })
   }
+  // componentDidMount() {
+  //   axios
+  //     .get('https://test-4d778-default-rtdb.firebaseio.com/quize.json')
+  //     .then((response) => {})
+  // }
+
   render() {
     return (
       <div className='App'>
@@ -189,8 +149,8 @@ export default class App extends React.Component {
               {this.state.hasSelect ? (
                 <select onClick={this.onChangeSelect}>
                   <option>&nbsp;{''}</option>
-                  {this.state.famalay.map((etem, key) => (
-                    <option>&nbsp;{etem}</option>
+                  {this.state.famalay.map((etem, ind) => (
+                    <option key={ind}>&nbsp;{etem}</option>
                   ))}
                   }
                 </select>
@@ -203,8 +163,8 @@ export default class App extends React.Component {
               {this.state.hasSelect ? (
                 <select onClick={this.onChangeSelectToun}>
                   <option>&nbsp;{''}</option>
-                  {this.state.name.map((etem, key) => (
-                    <option>&nbsp;{etem}</option>
+                  {this.state.name.map((etem, index) => (
+                    <option key={index}> &nbsp;{etem}</option>
                   ))}
                   }
                 </select>
@@ -217,10 +177,9 @@ export default class App extends React.Component {
               {this.state.hasSelect ? (
                 <select onClick={this.onChangeSelectSoname}>
                   <option>&nbsp;{''}</option>
-                  {this.state.soname.map((etem) => (
-                    <option>{etem}</option>
+                  {this.state.soname.map((etem, index) => (
+                    <option key={index}>{etem}</option>
                   ))}
-                  }
                 </select>
               ) : undefined}
             </p>
@@ -232,20 +191,10 @@ export default class App extends React.Component {
           <div className='App-quest'>
             <Questions
               quest={this.state.quest}
-              onChangeInput1={this.onChangeInput1}
-              onChangeInput2={this.onChangeInput2}
-              onChangeInput3={this.onChangeInput3}
-              onChangeInput4={this.onChangeInput4}
-              onChangeInput5={this.onChangeInput5}
-              onChangeInput6={this.onChangeInput6}
-              onChangeInput7={this.onChangeInput7}
-              onChangeInput8={this.onChangeInput8}
-              onChangeInput9={this.onChangeInput9}
-              onChangeInput10={this.onChangeInput10}
-              onChangeInput11={this.onChangeInput11}
+              onChangeInput={this.onChangeInput}
             />
             <Answers
-              hasInput1={this.state.hasInput1}
+              hasInput={this.state.hasInput}
               hasInput2={this.state.hasInput2}
               hasInput3={this.state.hasInput3}
               hasInput4={this.state.hasInput4}
@@ -258,6 +207,8 @@ export default class App extends React.Component {
               hasInput11={this.state.hasInput11}
               hasEnd={this.hasEnd}
               testEnd={this.testEnd}
+              quest={this.state.quest}
+              answer={this.state.answer}
             />
           </div>
         </div>
